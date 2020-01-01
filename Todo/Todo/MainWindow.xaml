@@ -1,0 +1,64 @@
+﻿<Window x:Class="Todo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Todo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="300" Style="{StaticResource newStyle}" Topmost="True">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26.4"/>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1">
+            <local:TodoItemControl TodoContent="2、加入 单序列判断标志，单序列仍然 显示 在序列下拉列表 中，但是不处理切换 事件。" TodoFininishFlag="False" TodoDate="上午" TodoEditFlag="Hidden" MouseDoubleClick="TodoItemControl_MouseDoubleClick" LostFocus="TodoItemControl_LostFocus"/>
+            <local:TodoItemControl TodoContent="HelloWorld" TodoFininishFlag="False" TodoDate="上午" TodoEditFlag="Hidden" MouseDoubleClick="TodoItemControl_MouseDoubleClick"/>
+            <local:TodoItemControl TodoContent="HelloWorld" TodoFininishFlag="False" TodoDate="上午" TodoEditFlag="Hidden" MouseDoubleClick="TodoItemControl_MouseDoubleClick"/>
+            <local:TodoItemControl TodoContent="HelloWorld" TodoFininishFlag="False" TodoDate="上午" TodoEditFlag="Hidden" MouseDoubleClick="TodoItemControl_MouseDoubleClick"/>
+        </StackPanel>
+
+        <!--<ListBox Grid.Row="1" Style="{StaticResource StyleListBox}" ItemContainerStyle="{StaticResource StyleListBoxItem}" Name="listbox_todo">
+            <ListBox.ItemTemplate>
+                <ItemContainerTemplate>
+                    <Grid Height="50">
+                        <CheckBox IsChecked="{Binding TodoFininishFlag}" VerticalAlignment="Center" Style="{StaticResource CheckBoxStyle}" Margin="3,10,0,0" HorizontalAlignment="Left"/>
+                        --><!--<Label Content="TODO" Height="50" VerticalAlignment="Center" VerticalContentAlignment="Center"/>--><!--
+                        <TextBox Text="{Binding TodoContent}" FontWeight="Bold" VerticalAlignment="Center" x:Name="todoTbox" Visibility="{Binding TodoEditFlag}" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Center" Margin="30,3,50,3"/>
+                        <Label Content="{Binding TodoDate}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,3,3,3"/>
+                    </Grid>
+                </ItemContainerTemplate>
+            </ListBox.ItemTemplate>
+            --><!--<ListBoxItem>
+                <local:TodoItemControl TodoContent="HelloWorld" TodoFininishFlag="False" TodoDate="上午" TodoEditFlag="Hidden"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <local:TodoItemControl TodoContent="HelloWorld" TodoFininishFlag="False" TodoDate="上午" TodoEditFlag="Hidden"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <local:TodoItemControl TodoContent="HelloWorld" TodoFininishFlag="False" TodoDate="上午" TodoEditFlag="Hidden"/>
+            </ListBoxItem>--><!--
+        </ListBox>-->
+
+        <Border Grid.Row="2" BorderBrush="{StaticResource AccentBaseColor}" BorderThickness="0,1,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label Content="备注" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                <RichTextBox Grid.Row="1"  BorderBrush="Transparent" BorderThickness="0" />
+            </Grid>
+        </Border>
+
+        <WrapPanel Grid.Row="3">
+            <Image Width="25" Height="25" Source="add.png" Style="{StaticResource ImageStyle}" Name="add" MouseDown="Add_MouseDown"/>
+            <Image Width="25" Height="25" Source="setting.png" Style="{StaticResource ImageStyle}"/>
+        </WrapPanel>
+    </Grid>
+</Window>
