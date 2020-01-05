@@ -172,5 +172,9 @@
     <Resource Include="add.png" />
     <Resource Include="setting.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Screenshots\QQ截图20200105185400.png" />
+    <Resource Include="Screenshots\QQ截图20200105185420.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
