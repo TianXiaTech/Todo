@@ -48,9 +48,7 @@ namespace Todo
     {
         public static readonly DependencyProperty TodoContentProperty = DependencyProperty.Register("TodoContent", typeof(string), typeof(FrameworkElement));
         public static readonly DependencyProperty TodoFininishFlagProperty = DependencyProperty.Register("TodoFininishFlag", typeof(bool), typeof(FrameworkElement));
-        public static readonly DependencyProperty TodoDateProperty = DependencyProperty.Register("TodoDate",typeof(string),typeof(FrameworkElement));
-        public static readonly DependencyProperty TodoEditFlagProperty = DependencyProperty.Register("TodoEditFlag", typeof(Visibility),typeof(FrameworkElement));
-        public static readonly DependencyProperty TodoDisplayFlagProperty = DependencyProperty.Register("TodoDisplayFlag", typeof(Visibility), typeof(FrameworkElement));
+        public static readonly DependencyProperty TodoTimeProperty = DependencyProperty.Register("TodoTime",typeof(string),typeof(FrameworkElement));   
 
         public string TodoContent
         {
@@ -76,43 +74,17 @@ namespace Todo
             }
         }
 
-        public string TodoDate
+        public string TodoTime
         {
             get
             {
-                return GetValue(TodoDateProperty).ToString();
+                return GetValue(TodoTimeProperty).ToString();
             }
             set
             {
-                SetValue(TodoDateProperty, value);
+                SetValue(TodoTimeProperty, value);
             }
         }
-
-        public Visibility TodoEditFlag
-        {
-            get
-            {
-                return (Visibility)GetValue(TodoEditFlagProperty);
-            }
-            set
-            {
-                SetValue(TodoEditFlagProperty, value);
-            }
-        }
-
-        public Visibility TodoDisplayFlag
-        {
-            get
-            {
-                return (Visibility)GetValue(TodoDisplayFlagProperty);
-            }
-            set
-            {
-                SetValue(TodoDisplayFlagProperty,value);
-            }
-        }
-
-
 
         static TodoItemControl()
         {

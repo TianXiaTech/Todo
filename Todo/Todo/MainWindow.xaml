@@ -14,11 +14,8 @@
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="1">
-            <local:TodoItemControl TodoContent="2、加入 单序列判断标志，单序列仍然 显示 在序列下拉列表 中，但是不处理切换 事件。" TodoFininishFlag="False" TodoDate="上午" TodoEditFlag="Hidden" MouseDoubleClick="TodoItemControl_MouseDoubleClick" LostFocus="TodoItemControl_LostFocus"/>
-            <local:TodoItemControl TodoContent="HelloWorld" TodoFininishFlag="False" TodoDate="上午" TodoEditFlag="Hidden" MouseDoubleClick="TodoItemControl_MouseDoubleClick"/>
-            <local:TodoItemControl TodoContent="HelloWorld" TodoFininishFlag="False" TodoDate="上午" TodoEditFlag="Hidden" MouseDoubleClick="TodoItemControl_MouseDoubleClick"/>
-            <local:TodoItemControl TodoContent="HelloWorld" TodoFininishFlag="False" TodoDate="上午" TodoEditFlag="Hidden" MouseDoubleClick="TodoItemControl_MouseDoubleClick"/>
+        <StackPanel Grid.Row="1" Name="stack_ContentList">
+           
         </StackPanel>
 
         <!--<ListBox Grid.Row="1" Style="{StaticResource StyleListBox}" ItemContainerStyle="{StaticResource StyleListBoxItem}" Name="listbox_todo">

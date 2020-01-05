@@ -90,23 +90,26 @@ namespace Todo
 
         private void Add_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            TodoList.Add(new TodoItem() { TodoContent = "Helloworld",TodoDate = "2019",TodoEditFlag = Visibility.Visible,TodoFininishFlag = false});
-        }
+            AddNewTodoDialog addNewTodoDialog = new AddNewTodoDialog(this);
+            if(addNewTodoDialog.ShowDialog() == true)
+            {
+                var content = addNewTodoDialog.tbox_Content.Text;
+                var time = addNewTodoDialog.combox_Time.Text;
 
-        private void TodoItemControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            var item = sender as TodoItemControl;
+                TodoItemControl todoItemControl = new TodoItemControl();
+                todoItemControl.TodoContent = content;
+                todoItemControl.TodoTime = time;
 
-            item.TodoEditFlag = Visibility.Visible;
-            item.TodoDisplayFlag = Visibility.Hidden;
-        }
+                todoItemControl.MouseDoubleClick += (a, b) => 
+                {
+                    if (MessageBox.Show("是否移除该Todo", "确认", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        this.stack_ContentList.Children.Remove(todoItemControl);
+                    }
+                };
 
-        private void TodoItemControl_LostFocus(object sender, RoutedEventArgs e)
-        {
-            var item = sender as TodoItemControl;
-
-            item.TodoEditFlag = Visibility.Hidden;
-            item.TodoDisplayFlag = Visibility.Visible;
+                this.stack_ContentList.Children.Add(todoItemControl);
+            }
         }
     }
 }

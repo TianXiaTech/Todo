@@ -16,29 +16,19 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:TodoItemControl}">
-                    <Border Background="{TemplateBinding Background}"
+                    <Border Background="Transparent"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}" x:Name="border" Margin="5">
                         <Grid Height="50">
                             <CheckBox IsChecked="{TemplateBinding TodoFininishFlag}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{StaticResource CheckBoxStyle}" Margin="3,0,0,0"/>
-                            <Grid HorizontalAlignment="Left" Margin="30,0,60,0">
-                                <Label  Height="50" VerticalAlignment="Center" VerticalContentAlignment="Center" Visibility="{TemplateBinding TodoDisplayFlag}">
+                            <Grid HorizontalAlignment="Left" Margin="38,0,60,0">
+                                <Label  Height="50" VerticalAlignment="Center" VerticalContentAlignment="Center" FontWeight="SemiBold">
                                     <Label.Content>
                                         <TextBlock Text="{TemplateBinding TodoContent}" TextWrapping="Wrap"/>
                                     </Label.Content>
                                 </Label>
-                                <TextBox Text="{TemplateBinding TodoContent}" Margin="0,0,5,0" FontWeight="Bold" VerticalAlignment="Center" x:Name="todoTbox" Visibility="{TemplateBinding TodoEditFlag}" Style="{StaticResource TextBoxStyle}"/>
                             </Grid>
-                            <Grid HorizontalAlignment="Right" Width="60">
-                                <Label Content="{TemplateBinding TodoDate}" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{TemplateBinding TodoDisplayFlag}"/>
-                                <ComboBox Style="{StaticResource ComboBoxStyle}" Height="28" Visibility="{TemplateBinding TodoEditFlag}">
-                                    <ComboBoxItem>上午</ComboBoxItem>
-                                    <ComboBoxItem>下午</ComboBoxItem>
-                                    <ComboBoxItem>全天</ComboBoxItem>
-                                    <ComboBoxItem>晚上</ComboBoxItem>
-                                    <ComboBoxItem>凌晨</ComboBoxItem>
-                                </ComboBox>
-                            </Grid>
+                            <Label Width="60" HorizontalAlignment="Right" VerticalAlignment="Center" HorizontalContentAlignment="Center" Content="{TemplateBinding TodoTime}"/>
                         </Grid>
                     </Border>
 
