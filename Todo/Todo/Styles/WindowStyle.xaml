@@ -132,7 +132,7 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <StackPanel x:Name="WindowCommandButtonsStackPanel"  Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal" WindowChrome.IsHitTestVisibleInChrome="True">
-                                    <Button x:Name="Close" Width="26.4" Height="26.4" ToolTip="关闭"  WindowChrome.IsHitTestVisibleInChrome="True"  Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}"   IsTabStop="False"  Style="{StaticResource CaptionButtonStyleForClose}"  ContentTemplate="{StaticResource Close}" ></Button>
+                                    <!--<Button x:Name="Close" Width="26.4" Height="26.4" ToolTip="关闭"  WindowChrome.IsHitTestVisibleInChrome="True"  Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}"   IsTabStop="False"  Style="{StaticResource CaptionButtonStyleForClose}"  ContentTemplate="{StaticResource Close}" ></Button>-->
                                 </StackPanel>
                             </Grid>
                             <AdornerDecorator Grid.Row="0" Grid.RowSpan="2" KeyboardNavigation.IsTabStop="False">
