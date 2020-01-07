@@ -18,8 +18,8 @@
                 <ControlTemplate TargetType="{x:Type local:TodoItemControl}">
                     <Border Background="Transparent"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}" x:Name="border" Margin="5">
-                        <Grid Height="50">
+                            BorderThickness="{TemplateBinding BorderThickness}" x:Name="border" Margin="3">
+                        <Grid Height="45">
                             <CheckBox IsChecked="{TemplateBinding TodoFininishFlag}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{StaticResource CheckBoxStyle}" Margin="3,0,0,0"/>
                             <Grid HorizontalAlignment="Left" Margin="38,0,60,0">
                                 <Label  Height="50" VerticalAlignment="Center" VerticalContentAlignment="Center" FontWeight="SemiBold">
