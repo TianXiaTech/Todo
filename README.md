@@ -1,7 +1,7 @@
 # Todo
-effective todo
+一个简易的备忘程序，自己平常也用得到。
 
-## Screenshot
+## 界面截图
 
 ![main window](/Todo/Todo/Screenshots/QQ截图20200105185400.png)
 
