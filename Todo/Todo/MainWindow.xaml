@@ -6,13 +6,29 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Todo"
         mc:Ignorable="d"
-        Title="Todo" Height="550" Width="300" Style="{StaticResource newStyle}" Topmost="True" Icon="logo.png" MaxWidth="320" MaxHeight="600">
+        Title="Todo" Height="700" Width="300" Style="{StaticResource newStyle}" Topmost="True" Icon="logo.png" MaxWidth="320" MaxHeight="700" MouseDown="Window_MouseDown"
+        Loaded="Main_Loaded"
+        Name="main">
+    <Window.Background>
+        <SolidColorBrush Color="White" Opacity=".5"/>
+    </Window.Background>
+
+    <Window.Resources>
+        <Storyboard x:Key="start">
+            <DoubleAnimation Storyboard.TargetName="grid_Setting" Storyboard.TargetProperty="Height" From="0" To="220" Duration="0:0:0.5"/>
+        </Storyboard>
+
+        <Storyboard x:Key="end">
+            <DoubleAnimation Storyboard.TargetName="grid_Setting" Storyboard.TargetProperty="Height" From="220" To="0" Duration="0:0:0.5"/>
+        </Storyboard>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="65.4"/>
             <RowDefinition/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="25"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -67,13 +83,61 @@
 
                 <Label Content="备注" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
-                <RichTextBox Grid.Row="1"  BorderBrush="Transparent" BorderThickness="0" />
+                <RichTextBox Grid.Row="1"  BorderBrush="Transparent" BorderThickness="0" Background="Transparent"/>
             </Grid>
         </Border>
 
         <WrapPanel Grid.Row="3">
             <Image Width="25" Height="25" Source="add.png" Style="{StaticResource ImageStyle}" Name="add" MouseDown="Add_MouseDown"/>
-            <Image Width="25" Height="25" Source="setting.png" Style="{StaticResource ImageStyle}"/>
+            <Image Width="25" Height="25" Source="setting.png" Style="{StaticResource ImageStyle}" Name="setting" MouseDown="Setting_MouseDown"/>
         </WrapPanel>
+
+
+        <StackPanel  Name="grid_Setting" Grid.Row="4" Height="0">
+            <Label Content="窗体设置" FontWeight="Bold" Foreground="{DynamicResource AccentBaseColor}" FontSize="18"/>
+            <Grid Height="30">
+                <CheckBox Style="{StaticResource CheckBoxStyle}" Content="毛玻璃效果" HorizontalAlignment="Left" Margin="2,0,0,0" Name="cbx_Blur"/>
+                <Label Content="窗体透明度" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="105,0,0,0"
+                           IsEnabled="{Binding ElementName=cbx_Blur,Path=IsChecked}"></Label>
+                <Slider HorizontalAlignment="Left" Margin="176,0,0,0" Width="100" VerticalAlignment="Center" Style="{StaticResource SliderStyle}" Height="15"
+                            IsEnabled="{Binding ElementName=cbx_Blur,Path=IsChecked}" Maximum="1" Minimum="0" IsSnapToTickEnabled="True" TickFrequency="0.1" Value="1" ValueChanged="Slider_ValueChanged"></Slider>
+            </Grid>
+
+            <Label Content="主题设置" FontWeight="Bold" Foreground="{DynamicResource AccentBaseColor}" FontSize="18" />
+            <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Height="120" Template="{StaticResource StyleScrollViewerListBox}">
+                <WrapPanel PreviewMouseDown="WrapPanel_PreviewMouseDown">
+                    <Border Width="70" Height="100" Margin="10" CornerRadius="5" BorderThickness="1" BorderBrush="{DynamicResource AccentBaseColor}" Background="White" Style="{StaticResource BorderStyle}">
+
+                    </Border>
+
+                    <Border Width="70" Height="100" Margin="10" CornerRadius="5" BorderThickness="1" BorderBrush="{DynamicResource AccentBaseColor}" Background="#fff7d1" Style="{StaticResource BorderStyle}">
+
+                    </Border>
+
+                    <Border Width="70" Height="100" Margin="10" CornerRadius="5" BorderThickness="1" BorderBrush="{DynamicResource AccentBaseColor}" Background="#e4f9e0" Style="{StaticResource BorderStyle}">
+
+                    </Border>
+
+                    <Border Width="70" Height="100" Margin="10" CornerRadius="5" BorderThickness="1" BorderBrush="{DynamicResource AccentBaseColor}" Background="#ffe4f1" Style="{StaticResource BorderStyle}">
+
+                    </Border>
+
+                    <Border Width="70" Height="100" Margin="10" CornerRadius="5" BorderThickness="1" BorderBrush="{DynamicResource AccentBaseColor}" Background="#f2e6ff" Style="{StaticResource BorderStyle}">
+
+                    </Border>
+
+                    <Border Width="70" Height="100" Margin="10" CornerRadius="5" BorderThickness="1" BorderBrush="{DynamicResource AccentBaseColor}" Background="#e2f1ff" Style="{StaticResource BorderStyle}">
+
+                    </Border>
+
+                    <Border Width="70" Height="100" Margin="10" CornerRadius="5" BorderThickness="1" BorderBrush="{DynamicResource AccentBaseColor}" Background="#f3f2f1" Style="{StaticResource BorderStyle}">
+
+                    </Border>
+                    <Border Width="70" Height="100" Margin="10" CornerRadius="5" BorderThickness="1" BorderBrush="{DynamicResource AccentBaseColor}" Background="#696969" Style="{StaticResource BorderStyle}">
+
+                    </Border>
+                </WrapPanel>
+            </ScrollViewer>
+        </StackPanel>
     </Grid>
 </Window>

@@ -3,9 +3,11 @@
 
 ## 界面截图
 
-![main window](/Todo/Todo/Screenshots/QQ截图20200105185400.png)
+![main window](/Todo/Todo/Screenshots/1.png)
 
-![Add new todo](/Todo/Todo/Screenshots/QQ截图20200105185420.png)
+![Add new todo](/Todo/Todo/Screenshots/2.png)
+
+![System setting](/Todo/Todo/Screenshots/3.png)
 
 ## License
 

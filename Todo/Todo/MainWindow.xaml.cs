@@ -25,15 +25,19 @@ namespace Todo
     {
         public ObservableCollection<TodoItem> TodoList { get; set; } = new ObservableCollection<TodoItem>();
 
+        private System.Windows.Media.Animation.Storyboard start;
+        private System.Windows.Media.Animation.Storyboard end;
+
         public MainWindow()
         {
             InitializeComponent();
-            InitializeCommands();
+            InitializeAnimation();
+            InitializeCommands();           
 
             //listbox_todo.ItemsSource = TodoList;
         }
 
-
+        #region Initialization
         private void InitializeCommands()
         {
             CommandBindings.Add(new CommandBinding(SystemCommands.CloseWindowCommand, CloseWindow));
@@ -41,6 +45,12 @@ namespace Todo
             CommandBindings.Add(new CommandBinding(SystemCommands.MinimizeWindowCommand, MinimizeWindow, CanMinimizeWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, RestoreWindow, CanResizeWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.ShowSystemMenuCommand, ShowSystemMenu));
+        }    
+        
+        private void InitializeAnimation()
+        {
+            start = this.TryFindResource("start") as System.Windows.Media.Animation.Storyboard;
+            end = this.TryFindResource("end") as System.Windows.Media.Animation.Storyboard;
         }
 
         private void CanResizeWindow(object sender, CanExecuteRoutedEventArgs e)
@@ -87,6 +97,9 @@ namespace Todo
             SystemCommands.ShowSystemMenu(this, point);
         }
 
+        #endregion
+
+        #region Event
 
         private void Add_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -111,5 +124,70 @@ namespace Todo
                 this.stack_ContentList.Children.Add(todoItemControl);
             }
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                this.DragMove();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void Setting_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (grid_Setting.Height > 0)
+            {
+                HideSettingPanel();
+            }
+            else
+            {
+                ShowSettingPanel();
+            }
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            this.Background.Opacity = e.NewValue;
+        }
+
+        private void Main_Loaded(object sender, RoutedEventArgs e)
+        {
+            EnableBlurWindow();
+        }
+
+        private void WrapPanel_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var border = e.Source as Border;
+            if(border != null)
+            {
+                var opacity = this.Background.Opacity;
+                this.Background = border.Background;
+                this.Background.Opacity = opacity;
+            }
+        }
+        #endregion
+
+        #region Method
+        private void EnableBlurWindow()
+        {
+            WindowHelper.BlurWindow(this);
+        }
+
+        private void ShowSettingPanel()
+        {
+            if (start != null)
+                start.Begin();
+        }
+
+        private void HideSettingPanel()
+        {
+            if (end != null)
+                end.Begin();
+        }
+        #endregion
     }
 }
