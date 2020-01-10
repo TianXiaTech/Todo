@@ -181,8 +181,9 @@
     <Resource Include="setting.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Screenshots\QQ截图20200105185400.png" />
-    <Resource Include="Screenshots\QQ截图20200105185420.png" />
+    <Resource Include="Screenshots\1.png" />
+    <Resource Include="Screenshots\2.png" />
+    <Resource Include="Screenshots\3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
